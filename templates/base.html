@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" class="bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300" style="height:100vh;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+
+<body class="bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 h-full w-full">
+    <style>
+        #menu-toggle:checked + #menu {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+    </style>
+    {% include "partials/header.html" %}
+    {% block content %}{% endblock content %}
+    {% include "partials/footer.html" %}
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+
+        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        darkModeToggle.checked = prefersDarkMode;
+        document.documentElement.classList.toggle('dark', darkModeToggle.checked);
+        updateIcon();
+
+        darkModeToggle.addEventListener('change', () => {
+            document.documentElement.classList.toggle('dark', darkModeToggle.checked);
+            updateIcon();
+        });
+
+        function updateIcon() {
+            if (darkModeToggle.checked) {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            } else {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            }
+        }
+    </script>
+</body>
+</html>

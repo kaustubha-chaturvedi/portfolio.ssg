@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block title %}View My projects{% endblock title %}
+{% block content %}
+    <section class="dark:text-neutral-200 text-neutral-800 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 body-font">
+        <h1 class="text-3xl font-bold text-center w-full">Projects</h1>
+        <div class="container px-5 py-24 mx-auto">
+            <div class="flex flex-wrap -m-4">
+            {% for project in data.Data %}
+                <div class="p-4 md:w-1/2 lg:w-1/3">
+                    <div class="h-full bg-neutral-200 dark:bg-neutral-800 bg-opacity-40 px-8 py-12 rounded-lg overflow-hidden text-center relative">
+                        <h2 class="tracking-widest text-xs title-font font-medium text-neutral-500 mb-1">{{ pooject.Author }}</h2>
+                        <h1 class="title-font sm:text-2xl text-xl font-medium text-neutral-800 dark:text-neutral-200 mb-3">{{ project.Title }}</h1>
+                        <p class="leading-relaxed mb-3">{{ project.Description }}</p>
+                        <p>
+                            {% for tag in project.Tags %}
+                            <span class="inline-block py-1 px-2 rounded bg-neutral-800 text-neutral-200 text-xs font-medium tracking-widest">{{ tag }}</span>
+                            {% endfor %}
+                        </p>
+                        <a target="_blank" class="text-blue-400 inline-flex items-center mt-4" href="{{ project.URL }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="stroke-blue-400 icon icon-tabler icon-tabler-brand-github" width="32" viewBox="0 0 24 24" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+           {% if data.TotalPages > 1 %}
+                <div class="mt-4">
+                    {% if data.CurrentPage > 1 %}
+                        <a href="/projects/page/{{ data.CurrentPage-1 }}" class="mr-2 text-blue-500">Previous</a>
+                    {% endif %}
+                    <span class="dark:text-neutral-200 text-neutral-800">{{ data.CurrentPage }} / {{ data.TotalPages }}</span>                    
+                    {% if data.CurrentPage < data.TotalPages %}
+                        <a href="/projects/page/{{ data.CurrentPage+1 }}" class="mr-2 text-blue-500">Next</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+            </div>
+        </div>
+    </section>
+{% endblock content %}

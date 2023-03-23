@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block title %}{{ data.Title }}{% endblock title %}
+{% block content %}
+<div
+    class="dark:bg-neutral-900 bg-neutral-100 dark:text-neutral-200 text-neutral-800 min-h-screen flex flex-col mx-auto p-4">
+    <div class="prose dark:prose-invert porse-neutral prose-lg max-w-xl prose-img:rounded-lg prose-a:text-blue-400 mx-auto p-4">
+        <h1 class="text-4xl font-bold mb-4">{{ data.Title }}</h1>
+        <pre class="text-lg mb-4">Author: {{ data.Author }} | Date: {{ data.Date }}</pre>
+        {{ data.Content | safe }}
+    </div>
+</div>
+{% endblock content %}

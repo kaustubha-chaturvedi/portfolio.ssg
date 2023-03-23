@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}All Posts{% endblock title %}
+{% block content %}
+    <section class="dark:text-neutral-200 text-neutral-800 bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 body-font">
+        <h1 class="text-3xl font-bold text-center w-full">Posts</h1>
+        <div class="container px-5 py-24 mx-auto">
+            {% for post in data.Data %}
+                <div class="py-8 flex flex-wrap md:flex-nowrap">
+                    <div class="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
+                        <span class="font-semibold title-font text-neutral-800 dark:text-neutral-200">{{ post.Author }}</span>
+                        <span class="mt-1 text-neutral-500 text-sm">{{ post.Date }}</span>
+                    </div>
+                    <div class="md:flex-grow">
+                        <a href="/post/{{ post.Slug }}" class="text-2xl font-medium text-neutral-800 dark:text-neutral-200 title-font mb-2">{{ post.Title }}</h2>
+                        <p class="leading-relaxed">{{ post.Description }}.</p>
+                        <a href="/post/{{ post.Slug }}" class="text-blue-400 inline-flex items-center mt-4">Learn More
+                            <svg class="w-4 h-4 ml-2 stroke-blue-400" viewBox="0 0 24 24" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M5 12h14"></path>
+                                <path d="M12 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+            {% if data.TotalPages > 1 %}
+                <div class="max-w-full my-4">
+                    {% if data.CurrentPage > 1 %}
+                        <a href="/posts/page/{{ data.CurrentPage-1 }}" class="mr-2 text-blue-500">Previous</a>
+                    {% endif %}
+                    <span class="dark:text-neutral-200 text-neutral-800">{{ data.CurrentPage }} / {{ data.TotalPages }}</span>
+                    {% if data.CurrentPage < data.TotalPages %}
+                        <a href="/posts/page/{{ data.CurrentPage+1 }}" class="mr-2 text-blue-500">Next</a>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </section>
+{% endblock content %}
