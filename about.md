@@ -8,7 +8,12 @@ linkedin: https://www.linkedin.com/in/kaustubha-chaturvedi/
 ---
 ### Experience
 
-##### **App Development Lead at Undigitally (Jan 2023 - Present)**
+##### **Python Developer at Prishni (Nov 2023 - Present)**
+- Worked on the company's website backend.
+- Worked on an indigenous project for company clients.
+- **Tech Stack:** Django, FastApi, PostgreSQL, Azure, Docker
+
+##### **App Development Lead at Undigitally (Jan - Oct 2023)**
 - Created the entire app backend for the startup.
 - **Tech Stack:** Flutter, Firebase, FastAPI
 
