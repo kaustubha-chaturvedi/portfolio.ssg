@@ -1,4 +1,4 @@
-# Project Go Echo Portfolio
+# Portfolio Static Site Generator Go Echo
 
 ## Description
 
