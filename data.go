@@ -20,6 +20,7 @@ type Post struct {
 	Date        string
 	Slug        string
 	Content     template.HTML
+	ReadTime    string
 }
 
 // Project represents a project
@@ -93,7 +94,17 @@ func getData(path string) interface{} {
 	post.Slug = strings.ReplaceAll(strings.ToLower(post.Title), " ", "-")
 	content = strings.TrimSpace(strings.Join(body, "\n"))
 	post.Content = template.HTML(blackfriday.Run([]byte(content)))
+	
+	averageWordsPerMinute := 200 
+    wordsCount := countWords(content)
+    readTimeMinutes := float64(wordsCount) / float64(averageWordsPerMinute)
+    post.ReadTime = fmt.Sprintf("%.1f min read", readTimeMinutes)
 	return post
+}
+
+func countWords(text string) int {
+    words := strings.Fields(text)
+    return len(words)
 }
 
 func parseProject(header, body []string) Project {
