@@ -5,7 +5,10 @@
     class="flex-1 dark:bg-neutral-900 bg-neutral-100 prose dark:prose-invert
             porse-neutral prose-lg max-w-4xl prose-img:rounded-lg prose-a:text-blue-400 mx-auto p-4">
     <h1 class="text-4xl font-bold mb-4">{{ data.Title }}</h1>
-    <pre class="text-lg mb-4">Author: {{ data.Author }} | Date: {{ data.Date }}</pre>
-    {{ data.Content | safe }}
+    <div class="flex flex-wrap justify-between items center font-mono dark:bg-black bg-[#1f2937] text-lg mb-4 px-3 py-4 md:gap-4 rounded-lg">
+        <span>Author: {{ data.Author }}</span>
+        <span>Date: {{ data.Date }}</span>
+    </div>
+        {{ data.Content | safe }}
 </div>
 {% endblock content %}

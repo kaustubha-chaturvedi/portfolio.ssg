@@ -25,26 +25,19 @@
         const darkModeToggle = document.getElementById('darkModeToggle');
         const sunIcon = document.getElementById('sunIcon');
         const moonIcon = document.getElementById('moonIcon');
-
-        const prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        darkModeToggle.checked = prefersDarkMode;
-        document.documentElement.classList.toggle('dark', darkModeToggle.checked);
-        updateIcon();
-
-        darkModeToggle.addEventListener('change', () => {
-            document.documentElement.classList.toggle('dark', darkModeToggle.checked);
-            updateIcon();
-        });
-
-        function updateIcon() {
-            if (darkModeToggle.checked) {
-                sunIcon.classList.add('hidden');
-                moonIcon.classList.remove('hidden');
-            } else {
-                sunIcon.classList.remove('hidden');
-                moonIcon.classList.add('hidden');
-            }
-        }
-    </script>
+        const localStorageTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches && 'dark');
+      
+        const toggleDarkMode = (darkMode) => {
+          document.documentElement.classList.toggle('dark', darkMode);
+          localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+          sunIcon.classList.toggle('hidden', darkMode);
+          moonIcon.classList.toggle('hidden', !darkMode);
+        };
+      
+        darkModeToggle.checked = localStorageTheme === 'dark';
+        toggleDarkMode(darkModeToggle.checked);
+      
+        darkModeToggle.addEventListener('change', () => toggleDarkMode(darkModeToggle.checked));
+      </script>      
 </body>
 </html>
