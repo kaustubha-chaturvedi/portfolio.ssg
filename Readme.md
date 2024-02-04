@@ -31,7 +31,12 @@ go run .
 
 ## Deployment
 
-To deploy this project on Render,just import the repository and Render will automatically detect the project type and build it for you.
+To deploy this project on Github Pages:
+1. Create `Personal Access Token` from github.
+2. Create Secret in source app and target app.
+3. Target app needs to be `username.github.io` or else you will have to change routes.
+4. Change Token names to match your secret Tokens in workflow.
+5. Now enjoy your statically served portfolio site
 
 ## How to edit Templates
 
