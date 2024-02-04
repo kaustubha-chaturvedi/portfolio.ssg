@@ -25,7 +25,8 @@
                     <div class="flex items-center justify-between w-full mt-2">
                         <p>
                             {% for tag in project.Tags %}
-                            <span class="py-1 px-2 mx-1 rounded-full dark:bg-neutral-900 bg-neutral-100 dark:text-neutral-200 text-neutral-800 text-xs">{{ tag }}
+                            <span
+                                class="py-1 px-2 mx-1 rounded-full dark:bg-neutral-900 bg-neutral-100 dark:text-neutral-200 text-neutral-800 text-xs">{{ tag }}
                             </span>
                             {% endfor %}
                         </p>
@@ -48,11 +49,11 @@
         {% if data.TotalPages > 1 %}
         <div class="mt-4">
             {% if data.CurrentPage > 1 %}
-            <a href="/projects/page/{{ data.CurrentPage-1 }}" class="mr-2 text-blue-500">Previous</a>
+            <a href="/projects/page/{{ data.CurrentPage-1 }}.html" class="mr-2 text-blue-500">Previous</a>
             {% endif %}
             <span class="dark:text-neutral-200 text-neutral-800">{{ data.CurrentPage }} / {{ data.TotalPages }}</span>
             {% if data.CurrentPage < data.TotalPages %}
-            <a href="/projects/page/{{ data.CurrentPage+1 }}" class="mr-2 text-blue-500">Next</a>
+            <a href="/projects/page/{{ data.CurrentPage+1 }}.html" class="mr-2 text-blue-500">Next</a>
             {% endif %}
         </div>
         {% endif %}

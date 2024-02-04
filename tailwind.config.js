@@ -3,10 +3,26 @@ module.exports = {
   content: ['./templates/**/*.html'],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            ul: {
+              listStyle: 'disc',
+            },
+          },
+        },
+        invert: {
+          css: {
+            ul: {
+              listStyle: 'revert',
+            },
+          },
+        },
+      }),
+    },
   },
   plugins: [
     require('@tailwindcss/typography'),
   ],
 }
-

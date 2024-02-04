@@ -11,7 +11,7 @@
 
 <body class="bg-neutral-100 dark:bg-neutral-900 transition-colors duration-300 min-h-full w-full flex flex-col">
     <style>
-        #menu-toggle:checked + #menu {
+        #menu-toggle:checked+#menu {
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
@@ -26,18 +26,19 @@
         const sunIcon = document.getElementById('sunIcon');
         const moonIcon = document.getElementById('moonIcon');
         const localStorageTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches && 'dark');
-      
+
         const toggleDarkMode = (darkMode) => {
-          document.documentElement.classList.toggle('dark', darkMode);
-          localStorage.setItem('theme', darkMode ? 'dark' : 'light');
-          sunIcon.classList.toggle('hidden', darkMode);
-          moonIcon.classList.toggle('hidden', !darkMode);
+            document.documentElement.classList.toggle('dark', darkMode);
+            localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+            sunIcon.classList.toggle('hidden', darkMode);
+            moonIcon.classList.toggle('hidden', !darkMode);
         };
-      
+
         darkModeToggle.checked = localStorageTheme === 'dark';
         toggleDarkMode(darkModeToggle.checked);
-      
+
         darkModeToggle.addEventListener('change', () => toggleDarkMode(darkModeToggle.checked));
-      </script>      
+    </script>
 </body>
+
 </html>

@@ -1,84 +1,50 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
 	"path/filepath"
-	"strconv"
 	"strings"
 
-	"github.com/labstack/echo/v4"
-)
-
-const (
-	pageSize          = 5
-	projectsPerPage   = 6
-	postsDir          = "./posts"
-	projectsDir       = "./projects"
-	staticDir         = "static"
-	publicStaticDir   = "public/static"
-	publicPostsDir    = "public/posts"
-	publicProjectsDir = "public/projects"
-	aboutTemplate     = "public/index.html"
+	"github.com/kaustubha-chaturvedi/portfolio-ssg-go/app"
 )
 
 func main() {
-	copyStatic(staticDir, publicStaticDir)
+	app.EnsureDir(app.ContentDir)
+	app.EnsureDir(app.PublicDir)
+	app.CopyStatic(app.StaticDir, app.PublicStaticDir)
 
-	e := echo.New()
-	e.Static("/static", publicStaticDir)
-
-	_, err := getAboutContent("about.md")
+	_, err := app.GetAboutContent(filepath.Join(app.ContentDir, "about.md"))
 	if err != nil {
 		log.Fatal(err)
 	}
-	allPosts, _ := getAllData(postsDir, publicPostsDir, "posts.html", "page", pageSize)
-	getAllData(projectsDir, publicProjectsDir, "projects.html", "page", projectsPerPage)
+
+	allPosts, _ := app.GetAllData(app.PostsDir, app.PublicPostsDir, "posts.html", "page", app.PageSize)
+	app.GetAllData(app.ProjectsDir, app.PublicProjectsDir, "projects.html", "page", app.ProjectsPerPage)
 
 	for _, data := range allPosts {
-		post, ok := data.(Post)
+		post, ok := data.(app.Post)
 		if !ok {
 			log.Fatal("Failed to assert type to Post")
 		}
-		outputPath := filepath.Join(publicPostsDir, fmt.Sprintf("%s.html", strings.TrimSuffix(post.Slug, ".md")))
-		renderPage(filepath.Join("templates", "post.html"), outputPath, struct{ Post }{post})
+		outputPath := filepath.Join(app.PublicPostsDir, fmt.Sprintf("%s.html", strings.TrimSuffix(post.Slug, ".md")))
+		app.RenderPage(filepath.Join("templates", "post.html"), outputPath, struct{ app.Post }{post})
 	}
+	serve()
+}
 
-	e.GET("/", func(c echo.Context) error {
-		return c.File(aboutTemplate)
-	})
+func serve() {
+	devFlag := flag.Bool("dev", false, "Run in development mode")
+	flag.Parse()
+	dir := "public"
+	http.Handle("/", http.FileServer(http.Dir(dir)))
 
-	e.GET("/posts", func(c echo.Context) error {
-		return c.File(fmt.Sprintf("%s/page1.html", publicPostsDir))
-	})
-
-	e.GET("/post/:slug", func(c echo.Context) error {
-		slug := c.Param("slug")
-		return c.File(fmt.Sprintf("%s/%s.html", publicPostsDir, slug))
-	})
-
-	e.GET("/posts/page/:page", func(c echo.Context) error {
-		page, err := strconv.Atoi(c.Param("page"))
-		if err != nil {
-			return c.String(http.StatusBadRequest, "Invalid page number")
-		}
-		return c.File(fmt.Sprintf("%s/page%d.html", publicPostsDir, page))
-	})
-
-	e.GET("/projects", func(c echo.Context) error {
-		return c.File(fmt.Sprintf("%s/page1.html", publicProjectsDir))
-	})
-
-	e.GET("/projects/page/:page", func(c echo.Context) error {
-		page, err := strconv.Atoi(c.Param("page"))
-		if err != nil {
-			return c.String(http.StatusBadRequest, "Invalid page number")
-		}
-		return c.File(fmt.Sprintf("%s/page%d.html", publicProjectsDir, page))
-	})
-
-	if err := e.Start(":8000"); err != nil {
-		log.Fatal(err)
+	if *devFlag {
+		log.Printf("Server listening on http://localhost:8000")
+		log.Fatal(http.ListenAndServe(":8000", nil))
+	} else {
+		log.Println("Server can't be started in PROD.")
 	}
 }

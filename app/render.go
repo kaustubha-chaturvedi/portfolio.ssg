@@ -1,6 +1,7 @@
-package main
+package app
 
 import (
+	"fmt"
 	"io"
 	"log"
 	"os"
@@ -10,13 +11,34 @@ import (
 	"github.com/flosch/pongo2/v6"
 )
 
-func renderPage(templatePath, outputFilePath string, data interface{}) {
+func RenderPages(srcDir, destDir, templateFile, pagePrefix string, data []interface{}, totalPages, itemsPerPage int) {
+	for page := 1; page <= totalPages; page++ {
+		start := (page - 1) * itemsPerPage
+		end := start + itemsPerPage
+		if end > len(data) {
+			end = len(data)
+		}
+		currentData := data[start:end]
+		RenderPage(filepath.Join("templates", templateFile), filepath.Join(destDir,"page", fmt.Sprintf("%d.html", page)), struct {
+			Data        []interface{}
+			TotalPages  int
+			CurrentPage int
+		}{
+			Data:        currentData,
+			TotalPages:  totalPages,
+			CurrentPage: page,
+		})
+	}
+}
+
+
+func RenderPage(templatePath, outputFilePath string, data interface{}) {
 	tpl, err := pongo2.FromFile(templatePath)
 	if err != nil {
 		log.Fatalf("Error loading template from file %s: %v", templatePath, err)
 	}
 	outputDir := filepath.Dir(outputFilePath)
-	ensureDir(outputDir)
+	EnsureDir(outputDir)
 
 	file, err := os.Create(outputFilePath)
 	if err != nil {
@@ -30,14 +52,14 @@ func renderPage(templatePath, outputFilePath string, data interface{}) {
 	log.Printf("Successfully rendered template to file: %s", outputFilePath)
 }
 
-func ensureDir(dir string) {
+func EnsureDir(dir string) {
 	err := os.MkdirAll(dir, 0755)
 	if err != nil {
 		log.Fatalf("Failed to create directory %s: %v", dir, err)
 	}
 }
 
-func copyStatic(srcDir, destDir string) {
+func CopyStatic(srcDir, destDir string) {
 	files, err := os.ReadDir(srcDir)
 	if err != nil {
 		log.Fatalf("Failed to read directory %s: %v", srcDir, err)
