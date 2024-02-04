@@ -9,7 +9,7 @@ Also, I wanted to learn Go and this project was a good way to do that.
 
 ## Clarifications
 
-Yup this repo is based on my [https://github.com/kaustubha-chaturvedi/portfolio-echo](this repo) from previous year that time I was just learning go syntax and it's framework and library ecosystem,
+Yup this repo is based on my [this repo](https://github.com/kaustubha-chaturvedi/portfolio-echo) from previous year that time I was just learning go syntax and it's framework and library ecosystem,
 I halted that due to my eams and job search (ofcourse not because of laziness), I am back at learning Golang and this is my final version of static site portfolio,
 I hope it to be useful (atleast to me), and to allow anyone to be able to edit this I have used pongo2 as more people are comfortable with jinja2 style templating.
 If you are here reaing this please make use of your time at some better place.
