@@ -15,24 +15,23 @@ jobs:
     steps:
       - name: Checkout Source Repository
         uses: actions/checkout@v2
-          with:
+        with:
             repository: kaustubha-chaturvedi/portfolio-ssg-go
             token: ${{ secrets.pat }}
 
       - name: Set up Go
         uses: actions/setup-go@v2
-          with:
+        with:
             go-version: 1.21
 
-      - name: Build Portfolio
-        run: go build -o portfolio main.go
-
-      - name: Generate Static Site
-        run: ./portfolio
+      - name: Build & Run Portfolio
+        run: |
+          go build -o portfolio main.go
+          ./portfolio
 
       - name: Clone Target Repository
         run: git clone https://github.com/kaustubha-chaturvedi/kaustubha-chaturvedi.github.io.git
-          env:
+        env:
             TARGET_REPO_TOKEN: ${{ secrets.STATIC_REPO }}
 
       - name: Copy Files
