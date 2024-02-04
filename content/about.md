@@ -23,6 +23,6 @@ linkedin: https://www.linkedin.com/in/kaustubha-chaturvedi/
 
 ### Skills
 - **Languages**: Java, Python, C++, C, JavaScript, HTML, CSS, SQL, Golang
-- **Frameworks**: Django, FastApi, React, Express.js, Flask, Spring Boot, Bootstrap, Material UI, Tensorflow, Keras, PyTorch, Pandas
+- **Frameworks**: Django, FastApi, React, Express.js, Flask, Spring Boot, NextJS, Svelte, Tensorflow, Keras, PyTorch, Pandas
 - **Databases**: MySQL, PostgreSQL, MongoDB, Redis, DynamoDB
 - **Tools**: Git, Docker, Kubernetes, AWS, Azure, Postman
