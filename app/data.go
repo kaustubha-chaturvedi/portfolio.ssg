@@ -68,7 +68,7 @@ func getData(path string) interface{} {
 	}
 
 	post := parsePost(header, body)
-	post.Slug = strings.ReplaceAll(strings.ToLower(post.Title), " ", "-")
+	post.Slug = strings.ReplaceAll(strings.Split(filepath.Base(path), ".md")[0], " ", "-")
 	content = strings.TrimSpace(strings.Join(body, "\n"))
 	post.Content = template.HTML(ParseMarkdown(content))
 	
