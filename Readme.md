@@ -38,6 +38,8 @@ To deploy this project on Github Pages:
 4. Change Token names to match your secret Tokens in workflow.
 5. Now enjoy your statically served portfolio site
 
-## How to edit Templates
+## How to edit Theme
 
-To edit the templates, edit the files in the templates folder. The templates are written in Go's pongo2 template language. Which is similar to Jinja2.
+To edit the Theme, create you theme in the ThemeDir folder following structure of default theme. 
+The themes are written in Go's pongo2 template language. Which is similar to Jinja2.
+After creating the theme, you can change the theme in the conf.go file by changing the ThemeDir variable to point to your theme.

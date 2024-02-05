@@ -1,4 +1,4 @@
-module github.com/kaustubha-chaturvedi/portfolio-ssg-go
+module github.com/kaustubha-chaturvedi/expo.go
 
 go 1.21.6
 

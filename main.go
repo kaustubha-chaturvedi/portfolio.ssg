@@ -8,29 +8,29 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/kaustubha-chaturvedi/portfolio-ssg-go/app"
+	"github.com/kaustubha-chaturvedi/expo.go/app"
 )
 
 func main() {
-	app.EnsureDir(app.ContentDir)
-	app.EnsureDir(app.PublicDir)
-	app.CopyStatic(app.StaticDir, app.PublicStaticDir)
+	app.EnsureDir(ContentDir)
+	app.EnsureDir(PublicDir)
+	app.CopyStatic(StaticDir, PublicStaticDir)
 
-	_, err := app.GetAboutContent(filepath.Join(app.ContentDir, "about.md"))
+	_, err := app.GetAboutContent(filepath.Join(ContentDir, AboutMeMd),ThemeDir, PublicDir)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	allPosts, _ := app.GetAllData(app.PostsDir, app.PublicPostsDir, "posts.html", "page", app.PageSize)
-	app.GetAllData(app.ProjectsDir, app.PublicProjectsDir, "projects.html", "page", app.ProjectsPerPage)
+	allPosts, _ := app.GetAllData(PostsDir, PublicPostsDir, "posts.html", "page", PageSize, ThemeDir)
+	app.GetAllData(ProjectsDir, PublicProjectsDir, "projects.html", "page", ProjectsPerPage, ThemeDir)
 
 	for _, data := range allPosts {
 		post, ok := data.(app.Post)
 		if !ok {
 			log.Fatal("Failed to assert type to Post")
 		}
-		outputPath := filepath.Join(app.PublicPostsDir, fmt.Sprintf("%s.html", strings.TrimSuffix(post.Slug, ".md")))
-		app.RenderPage(filepath.Join("templates", "post.html"), outputPath, struct{ app.Post }{post})
+		outputPath := filepath.Join(PublicPostsDir, fmt.Sprintf("%s.html", strings.TrimSuffix(post.Slug, ".md")))
+		app.RenderPage(filepath.Join(ThemeDir, "post.html"), outputPath, struct{ app.Post }{post})
 	}
 	serve()
 }

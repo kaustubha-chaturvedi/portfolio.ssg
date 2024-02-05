@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Source Repository
         uses: actions/checkout@v2
         with:
-            repository: kaustubha-chaturvedi/portfolio-ssg-go
+            repository: kaustubha-chaturvedi/expo.go
             token: ${{ secrets.pat }}
 
       - name: Set up Go

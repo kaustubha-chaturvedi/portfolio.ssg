@@ -11,7 +11,7 @@ import (
 	"github.com/flosch/pongo2/v6"
 )
 
-func RenderPages(srcDir, destDir, templateFile, pagePrefix string, data []interface{}, totalPages, itemsPerPage int) {
+func RenderPages(srcDir, destDir, templateFile, pagePrefix string, data []interface{}, totalPages, itemsPerPage int, ThemeDir string) {
 	for page := 1; page <= totalPages; page++ {
 		start := (page - 1) * itemsPerPage
 		end := start + itemsPerPage
@@ -19,7 +19,7 @@ func RenderPages(srcDir, destDir, templateFile, pagePrefix string, data []interf
 			end = len(data)
 		}
 		currentData := data[start:end]
-		RenderPage(filepath.Join("templates", templateFile), filepath.Join(destDir,"page", fmt.Sprintf("%d.html", page)), struct {
+		RenderPage(filepath.Join(ThemeDir, templateFile), filepath.Join(destDir,"page", fmt.Sprintf("%d.html", page)), struct {
 			Data        []interface{}
 			TotalPages  int
 			CurrentPage int

@@ -10,7 +10,7 @@ import (
 	"strings"
 )
 
-func GetAllData(srcDir, destDir, templateFile, pagePrefix string, itemsPerPage int) ([]interface{}, int) {
+func GetAllData(srcDir, destDir, templateFile, pagePrefix string, itemsPerPage int,ThemeDir string) ([]interface{}, int) {
 	var allData []interface{}
 
 	err := filepath.Walk(srcDir, func(path string, info os.FileInfo, err error) error {
@@ -28,7 +28,7 @@ func GetAllData(srcDir, destDir, templateFile, pagePrefix string, itemsPerPage i
 		log.Fatal(err)
 	}
 
-	RenderPages(srcDir, destDir, templateFile, pagePrefix, allData, totalPages, itemsPerPage)
+	RenderPages(srcDir, destDir, templateFile, pagePrefix, allData, totalPages, itemsPerPage, ThemeDir)
 
 	return allData, totalPages
 }
@@ -79,13 +79,13 @@ func getData(path string) interface{} {
 	return post
 }
 
-func GetAboutContent(filePath string) (AboutData, error) {
+func GetAboutContent(filePath string,ThemeDir string, PublicDir string) (AboutData, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
 		return AboutData{}, err
 	}
 	defer file.Close()
 	aboutData := parseAbout(file)
-	RenderPage(filepath.Join("templates", "about.html"), filepath.Join(PublicDir, "index.html"), aboutData)
+	RenderPage(filepath.Join(ThemeDir, "about.html"), filepath.Join(PublicDir, "index.html"), aboutData)
 	return aboutData, nil
 }

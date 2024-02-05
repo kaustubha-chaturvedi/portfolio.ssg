@@ -1,15 +1,17 @@
-package app
+package main
 
 import "fmt"
 
 var (
-	PageSize          = 5
+	PageSize          = 6
 	ProjectsPerPage   = 6
+	StaticDir         = "static"
+	AboutMeMd		  = "index.md"
+	PublicDir         = "public"
 	ContentDir        = "./content"
+	ThemeDir          = "./theme/default"
 	PostsDir          = fmt.Sprintf("%s/posts", ContentDir)
 	ProjectsDir       = fmt.Sprintf("%s/projects", ContentDir)
-	StaticDir         = "static"
-	PublicDir         = "public"
 	PublicStaticDir   = fmt.Sprintf("%s/static", PublicDir)
 	PublicPostsDir    = fmt.Sprintf("%s/posts", PublicDir)
 	PublicProjectsDir = fmt.Sprintf("%s/projects", PublicDir)
