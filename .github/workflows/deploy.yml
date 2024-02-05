@@ -26,8 +26,8 @@ jobs:
 
       - name: Build & Run Portfolio
         run: |
-          go build -o portfolio main.go
-          ./portfolio
+          go build -o expo .
+          ./expo
 
       - name: Clone Target Repository
         run: git clone https://github.com/kaustubha-chaturvedi/kaustubha-chaturvedi.github.io.git
