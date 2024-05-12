@@ -4,12 +4,12 @@ import "fmt"
 
 var (
 	PageSize          = 6
-	ProjectsPerPage   = 6
+	ProjectsPerPage   = 6 // unused with glass theme
 	StaticDir         = "static"
 	AboutMeMd		  = "index.md"
 	PublicDir         = "public"
 	ContentDir        = "./content"
-	ThemeDir          = "./theme/default"
+	ThemeDir          = "./theme/glass"
 	PostsDir          = fmt.Sprintf("%s/posts", ContentDir)
 	ProjectsDir       = fmt.Sprintf("%s/projects", ContentDir)
 	PublicStaticDir   = fmt.Sprintf("%s/static", PublicDir)

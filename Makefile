@@ -1,7 +1,7 @@
 .PHONY: all dev
 
 run:
-	@go run main.go
+	@go run .
 dev:
-	@npx tailwindcss -i ./static/!tw.css -o ./static/style.css --minify
+	@npx tailwindcss -i ./static/!tw.css -o ./static/glass.css --minify
 	@go run . -dev

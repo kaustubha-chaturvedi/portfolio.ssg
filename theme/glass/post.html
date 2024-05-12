@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}{{ data.Title }}{% endblock title %}
+{% block content %}
+<div
+    class="flex-1 dark:prose-invert
+            porse-neutral prose-lg max-w-4xl prose-img:rounded-lg prose-a:text-blue-400 mx-auto p-4 marker:text-orange-800 dark:marker:text-green-800  dark:text-mint text-hooker transition-colors duration-300">
+    <h1 class="text-4xl font-bold mb-4">{{ data.Title }}</h1>
+    <div
+        class="flex flex-wrap justify-between items center font-mono bg-cambridge bg-opacity-30 text-lg mb-4 px-3 py-4 md:gap-4 rounded-lg">
+        <span>Author: {{ data.Author }}</span>
+        <span>Date: {{ data.Date }}</span>
+    </div>
+    {{ data.Content | safe }}
+</div>
+{% endblock content %}

@@ -36,9 +36,10 @@ type AboutData struct {
 	Image       string
 	SocialMedia map[string]string
 	Content     template.HTML
+	Projects    []interface{}
 }
 
-func parseProject(header, body []string) Project {
+func parseProject(header []string) Project {
 	var project Project
 	for _, line := range header {
 		switch {
@@ -59,7 +60,7 @@ func parseProject(header, body []string) Project {
 	return project
 }
 
-func parsePost(header, body []string) Post {
+func parsePost(header []string) Post {
 	var post Post
 	for _, line := range header {
 		switch {
@@ -80,11 +81,12 @@ func countWords(text string) int {
     words := strings.Fields(text)
     return len(words)
 }
-
-func parseAbout(file *os.File) AboutData {
+// optional parameter Projects
+func parseAbout(file *os.File, Projects []interface{}) AboutData {
 	var aboutData AboutData
 	var inHeader bool
 	var header, body []string
+	socialMedia := make(map[string]string)
 
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
@@ -113,19 +115,28 @@ func parseAbout(file *os.File) AboutData {
 			aboutData.Description = strings.TrimSpace(strings.TrimPrefix(line, "description:"))
 		case strings.Contains(line, "image:"):
 			aboutData.Image = strings.TrimSpace(strings.TrimPrefix(line, "image:"))
-		case strings.Contains(line, "social:"):
-			aboutData.SocialMedia = parseSocialMedia(strings.TrimSpace(strings.TrimPrefix(line, "social:"))) 		
+		case strings.Contains(line, "github:"):
+			socialMedia["github"] = strings.TrimSpace(strings.TrimPrefix(line, "github:"))
+		case strings.Contains(line, "linkedin:"):
+			socialMedia["linkedin"] = strings.TrimSpace(strings.TrimPrefix(line, "linkedin:"))
+		case strings.Contains(line, "twitter:"):
+			socialMedia["twitter"] = strings.TrimSpace(strings.TrimPrefix(line, "twitter:"))
+		case strings.Contains(line, "instagram:"):
+			socialMedia["instagram"] = strings.TrimSpace(strings.TrimPrefix(line, "instagram:"))
+		case strings.Contains(line, "facebook:"):
+			socialMedia["facebook"] = strings.TrimSpace(strings.TrimPrefix(line, "facebook:"))
+		case strings.Contains(line, "email:"):
+			socialMedia["email"] = strings.TrimSpace(strings.TrimPrefix(line, "email:"))
+		case strings.Contains(line, "dribbble:"):
+			socialMedia["dribbble"] = strings.TrimSpace(strings.TrimPrefix(line, "dribbble:"))
+		case strings.Contains(line, "behance:"):
+			socialMedia["behance"] = strings.TrimSpace(strings.TrimPrefix(line, "behance:"))	
 		}
 	}
 	content := strings.TrimSpace(strings.Join(body, "\n"))
 	aboutData.Content = template.HTML(ParseMarkdown(content))
-
+	aboutData.SocialMedia = socialMedia
+	aboutData.Image = strings.ReplaceAll(aboutData.Image, " ", "%20")
+	aboutData.Projects = Projects
 	return aboutData
-}
-
-func parseSocialMedia(social string) map[string]string {
-	socialMedia := make(map[string]string)
-	linkKey := strings.Split(social, ":")
-	socialMedia[linkKey[0]] = linkKey[1]
-	return socialMedia
 }

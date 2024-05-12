@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" class="transition-colors duration-300 w-full h-screen">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="/static/glass.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
+</head>
+
+<body
+    class="dark:bg-eerie bg-azure transition-colors duration-300 min-h-full w-full flex flex-col justify-between gap-6">
+    {% block content %}
+    {% endblock content %}
+    {% include "partials/footer.html" %}
+    <script>
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const sunIcon = document.getElementById('sunIcon');
+        const moonIcon = document.getElementById('moonIcon');
+        const localStorageTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches && 'dark');
+
+        const toggleDarkMode = (darkMode) => {
+            document.documentElement.classList.toggle('dark', darkMode);
+            localStorage.setItem('theme', darkMode ? 'dark' : 'light');
+            sunIcon.classList.toggle('hidden', darkMode);
+            moonIcon.classList.toggle('hidden', !darkMode);
+        };
+
+        darkModeToggle.checked = localStorageTheme === 'dark';
+        toggleDarkMode(darkModeToggle.checked);
+
+        darkModeToggle.addEventListener('change', () => toggleDarkMode(darkModeToggle.checked));
+    </script>
+</body>
+
+</html>

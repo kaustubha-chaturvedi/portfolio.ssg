@@ -63,11 +63,11 @@ func getData(path string) interface{} {
 	}
 
 	if isProject {
-		project := parseProject(header, body)
+		project := parseProject(header)
 		return project
 	}
 
-	post := parsePost(header, body)
+	post := parsePost(header)
 	post.Slug = strings.ReplaceAll(strings.Split(filepath.Base(path), ".md")[0], " ", "-")
 	content = strings.TrimSpace(strings.Join(body, "\n"))
 	post.Content = template.HTML(ParseMarkdown(content))
@@ -79,13 +79,13 @@ func getData(path string) interface{} {
 	return post
 }
 
-func GetAboutContent(filePath string,ThemeDir string, PublicDir string) (AboutData, error) {
+func GetAboutContent(filePath string,ThemeDir string, PublicDir string, Projects []interface{}) (AboutData, error) {
 	file, err := os.Open(filePath)
 	if err != nil {
 		return AboutData{}, err
 	}
 	defer file.Close()
-	aboutData := parseAbout(file)
+	aboutData := parseAbout(file, Projects)
 	RenderPage(filepath.Join(ThemeDir, "about.html"), filepath.Join(PublicDir, "index.html"), aboutData)
 	return aboutData, nil
 }

@@ -16,14 +16,14 @@ func main() {
 	app.EnsureDir(PublicDir)
 	app.CopyStatic(StaticDir, PublicStaticDir)
 
-	_, err := app.GetAboutContent(filepath.Join(ContentDir, AboutMeMd),ThemeDir, PublicDir)
+	
+	allPosts, _ := app.GetAllData(PostsDir, PublicPostsDir, "posts.html", "page", PageSize, ThemeDir)
+	allProjects, _ := app.GetAllData(ProjectsDir, PublicProjectsDir, "projects.html", "page", ProjectsPerPage, ThemeDir)
+
+	_, err := app.GetAboutContent(filepath.Join(ContentDir, AboutMeMd),ThemeDir, PublicDir, allProjects)
 	if err != nil {
 		log.Fatal(err)
 	}
-
-	allPosts, _ := app.GetAllData(PostsDir, PublicPostsDir, "posts.html", "page", PageSize, ThemeDir)
-	app.GetAllData(ProjectsDir, PublicProjectsDir, "projects.html", "page", ProjectsPerPage, ThemeDir)
-
 	for _, data := range allPosts {
 		post, ok := data.(app.Post)
 		if !ok {

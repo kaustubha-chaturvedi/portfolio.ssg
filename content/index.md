@@ -1,6 +1,6 @@
 ---
 name: Kaustubha Chaturvedi
-tagline: Rise above and beyond
+tagline: Software Development Engineer @ Prishni
 description: I am a software engineer with a passion for building scalable and reliable systems.
 image: https://images.freeimages.com/images/large-previews/023/geek-avatar-1632962.jpg
 github: https://github.com/kaustubha-chaturvedi/
