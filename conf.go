@@ -9,7 +9,7 @@ var (
 	AboutMeMd		  = "index.md"
 	PublicDir         = "public"
 	ContentDir        = "./content"
-	ThemeDir          = "./theme/glass"
+	ThemeDir          = "./theme/level5gyat"
 	PostsDir          = fmt.Sprintf("%s/posts", ContentDir)
 	ProjectsDir       = fmt.Sprintf("%s/projects", ContentDir)
 	PublicStaticDir   = fmt.Sprintf("%s/static", PublicDir)

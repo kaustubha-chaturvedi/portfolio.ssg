@@ -74,8 +74,8 @@ func getData(path string) interface{} {
 	
 	averageWordsPerMinute := 200 
     wordsCount := countWords(content)
-    readTimeMinutes := float64(wordsCount) / float64(averageWordsPerMinute)
-    post.ReadTime = fmt.Sprintf("%.1f min read", readTimeMinutes)
+    readTimeMinutes := wordsCount / averageWordsPerMinute
+    post.ReadTime = fmt.Sprintf("%d min read", readTimeMinutes)
 	return post
 }
 

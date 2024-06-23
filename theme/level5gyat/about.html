@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}{{ data.Name }}-{{ data.Tagline }}{% endblock title %}
+{% block content %}
+<article class="mt-4 px-2 transition-colors duration-300">
+    <div class="flex flex-wrap items-center justify-around text-center">
+        <div class="flex flex-col justify-center md:text-left items-center md:items-start ">
+            <img src="{{ data.Image }}" alt="Profile Image" class="w-96 mb-4 rounded-full">
+            <h1 class="text-4xl font-bold mb-4">{{ data.Name }}</h1>
+            <p class="text-lg mb-4 dark:text-neutral-300 text-neutral-600">{{ data.Tagline }}</p>
+            <p class="mb-4">{{ data.Description }}</p>
+            <div class="flex space-x-4">
+                {% for platform, link in data.SocialMedia %}
+                <a href="{{ link }}" target="_blank" rel="noopener noreferrer"
+                    class="dark:text-neutral-300 text-neutral-600 hover:underline">
+                    {{ platform|capfirst  }}
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        <div
+            class="prose dark:prose-invert porse-neutral porse-lg prose-img:rounded-lg prose-a:text-blue-400 p-6 
+            marker:text-orange-300 dark:marker:text-green-800 text-left rounded-3xl m-4 bg-white dark:bg-black bg-opacity-30 dark:bg-opacity-30 backdrop-blur shadow-lg glow:text-glow glow:border-glow glow:ring-glow glow:bg-glow[.15]">
+            {{ data.Content | safe }}
+        </div>
+    </div>
+    <div class="flex flex-wrap items-center justify-around">
+        <div class="flex flex-col justify-center md:text-left items-center md:items-start mx-16">
+            <h1 class="text-3xl font-bold my-4 px-3">Projects</h1>
+            <div class="flex justify-center md:text-left items-center md:items-start my-4 flex-wrap">
+                {% include "projects.html" %}
+            </div>
+        </div>
+    </div>
+</article>
+{% endblock content %}

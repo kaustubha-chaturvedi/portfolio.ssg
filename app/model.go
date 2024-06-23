@@ -14,6 +14,8 @@ type Post struct {
 	Author      string
 	Date        string
 	Slug        string
+	HeaderImage string
+	Tags		[]string
 	Content     template.HTML
 	ReadTime    string
 }
@@ -24,6 +26,7 @@ type Project struct {
 	Author      string
 	Date        string
 	URL         string
+	HeaderImage string
 	Tags        []string
 	Slug		string
 }
@@ -55,6 +58,8 @@ func parseProject(header []string) Project {
 			project.URL = strings.TrimSpace(strings.TrimPrefix(line, "url:"))
 		case strings.Contains(line, "tags:"):
 			project.Tags = strings.Split(strings.TrimSpace(strings.TrimPrefix(line, "tags:")), ",")
+		case strings.Contains(line, "header-image:"):
+			project.HeaderImage = strings.TrimSpace(strings.TrimPrefix(line, "header-image:"))
 		}
 	}
 	return project
@@ -72,6 +77,11 @@ func parsePost(header []string) Post {
 			post.Author = strings.TrimSpace(strings.TrimPrefix(line, "author:"))
 		case strings.Contains(line, "date:"):
 			post.Date = strings.TrimSpace(strings.TrimPrefix(line, "date:"))
+		case strings.Contains(line, "header-image:"):
+			post.HeaderImage = strings.TrimSpace(strings.TrimPrefix(line, "header-image:"))
+		case strings.Contains(line, "tags:"):
+			post.Tags = strings.Split(strings.TrimSpace(strings.TrimPrefix(line, "tags:")), ",")
+
 		}
 	}
 	return post

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en"
+    class="bg-gradient-to-tr to-white from-[#c2c2c2] dark:from-[#232323] dark:to-[#7d7d7d] text-neutral-900 dark:text-neutral-100 transition-colors duration-300">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %}</title>
+    <link rel="stylesheet" href="/static/level5gyat.css">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+        rel="stylesheet">
+    <script src="/static/js/main.js" defer></script>
+    {% block head %}{% endblock head %}
+</head>
+
+
+<body
+    class="bg-gradient-to-tr to-white from-[#c2c2c2] dark:from-[#232323] dark:to-[#7d7d7d] text-neutral-900 dark:text-neutral-100 transition-colors duration-300 flex h-full min-h-screen gap-6 flex-col">
+    <main class="min-h-full w-full flex flex-col flex-1">
+        {% block content %}{% endblock content %}
+    </main>
+    {% include "partials/sidebar.html" %}
+    <div class="inner-cursor"></div>
+    <div class="outer-cursor"></div>
+</body>
+</html>

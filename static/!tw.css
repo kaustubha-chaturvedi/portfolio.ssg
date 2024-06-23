@@ -7,13 +7,13 @@
   font-optical-sizing: auto;
   font-weight: 300;
   font-style: normal;
+  cursor: none;
 }
 
 .card {
   display: flex;
   padding: 1rem;
   border-radius: 10px;
-  box-shadow: -1rem 0 3rem #000;
   transition: 0.5s ease-out;
   position: relative;
   left: 0px;
@@ -41,4 +41,42 @@
 .card:hover~.card {
   position: relative;
   transition: 0.4s ease-out;
+}
+
+.inner-cursor {
+  position: fixed;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  pointer-events: none;
+  transition: width 0.5s, height 0.5s;
+  z-index: 1000;
+}
+
+.inner-cursor.grow {
+  width: 30px;
+  height: 30px;
+  transition: width 0.5s, height 0.5s;
+}
+
+.outer-cursor {
+  position: fixed;
+  left: 10px;
+  width: 30px;
+  height: 30px;
+  transform: translate(-50%, -50%);
+  border: 1.5px solid #fff;
+  mix-blend-mode: difference;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 1000;
+}
+
+.outer-cursor.grow {
+  transition: border 0.5s;
+  border: 0px solid #fff;
 }

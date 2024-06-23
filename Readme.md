@@ -40,6 +40,6 @@ To deploy this project on Github Pages:
 
 ## How to edit Theme
 
-To edit the Theme, create you theme in the ThemeDir folder following structure of default theme. 
+To edit the Theme, create you theme in the ThemeDir folder following structure of default theme and add a tailwind config file copying default as base. 
 The themes are written in Go's pongo2 template language. Which is similar to Jinja2.
-After creating the theme, you can change the theme in the conf.go file by changing the ThemeDir variable to point to your theme.
+After creating the theme, you can change the theme in the conf.go file by changing the ThemeDir variable to point to your theme and import file in `tailwind.config.js`.

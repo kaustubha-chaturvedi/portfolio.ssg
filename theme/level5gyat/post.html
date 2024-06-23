@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}{{ data.Title }}{% endblock title %}
+{% block content %}
+<section class="flex">
+    <article id="content"
+        class="flex-1 porse dark:porse-invert prose-neutral prose-lg max-w-2xl lg:max-w-4xl prose-img:rounded-lg prose-a:text-blue-400 mx-auto p-4 marker:text-orange-300 dark:marker:text-green-800 w-full dark:text-neutral-300 text-neutral-600">
+        <div class="flex justify-between dark:text-neutral-300 text-neutral-600 text-sm">
+            <span>| {{ data.Date }}</span>
+            <span>{{ data.ReadTime }}</span>
+        </div>
+        <h1 class="text-4xl font-bold my-8">{{ data.Title }}</h1>
+        <p class="text-sm">{{ data.Description | safe }}</p>
+        <div class="w-full h-64">
+            <img src="{{ data.HeaderImage }}" alt="Profile Image"
+                class="w-full h-full rounded-xl object-cover object-center" />
+        </div>
+        <hr class="h-px w-full border-t-0 bg-neutral-100 dark:bg-white/10 my-8 rounded-md" />
+        {{ data.Content | safe }}
+    </article>
+    <div class="w-64 p-4 border-l h-full overflow-y-auto sticky top-16 hidden lg:block text-black">
+        <ul class="list-none p-0" id="post-sidebar"></ul>
+    </div>
+</section>
+{% endblock content %}

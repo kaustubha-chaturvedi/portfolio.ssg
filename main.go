@@ -1,13 +1,13 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"log"
 	"net/http"
+	"os"
 	"path/filepath"
 	"strings"
-
+	"github.com/joho/godotenv"
 	"github.com/kaustubha-chaturvedi/expo.go/app"
 )
 
@@ -36,14 +36,13 @@ func main() {
 }
 
 func serve() {
-	devFlag := flag.Bool("dev", false, "Run in development mode")
-	flag.Parse()
 	dir := "public"
 	http.Handle("/", http.FileServer(http.Dir(dir)))
-
-	if *devFlag {
-		log.Printf("Server listening on http://localhost:8000")
-		log.Fatal(http.ListenAndServe(":8000", nil))
+	godotenv.Load()
+	env := os.Getenv("ENV")
+	if env == "DEV" {
+		log.Printf("Server listening on http://localhost:8080")
+		log.Fatal(http.ListenAndServe(":8080", nil))
 	} else {
 		log.Println("Server can't be started in PROD.")
 	}

@@ -77,6 +77,11 @@ func CopyStatic(srcDir, destDir string) {
 		destPath := filepath.Join(destDir, file.Name())
 
 		if file.IsDir() {
+			err := os.MkdirAll(destPath, 0755)
+			if err != nil {
+				log.Fatalf("Failed to create destination directory %s: %v", destPath, err)
+			}
+			CopyStatic(srcPath, destPath) // Recursively copy subdirectories
 			continue
 		}
 
