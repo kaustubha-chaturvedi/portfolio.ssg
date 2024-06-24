@@ -155,3 +155,23 @@ document.addEventListener("DOMContentLoaded", function () {
     document.addEventListener('scroll', setActiveLink, { passive: true });
     setActiveLink();
 });
+
+// set active nav-link on click and remove active class from other nav-links
+const navLinks = document.querySelectorAll('.nav-link');
+navLinks.forEach((navLink, index) => {
+    navLink.addEventListener('click', (event) => {
+        if (navLink.getAttribute('target') === '_blank') return;
+
+        navLinks.forEach(link => link.classList.remove('active'));
+        navLink.classList.add('active');
+        localStorage.setItem('activeNavLink', index); // store active link index
+    });
+});
+
+window.onload = () => {
+    let activeNavLinkIndex = localStorage.getItem('activeNavLink');
+    if (activeNavLinkIndex === null) {
+        activeNavLinkIndex = 0; // default to first link (Home)
+    }
+    navLinks[activeNavLinkIndex].classList.add('active');
+};

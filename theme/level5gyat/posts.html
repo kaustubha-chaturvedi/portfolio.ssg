@@ -4,8 +4,7 @@
 <section
     class="dark:text-neutral-200 text-neutral-800 flex-grow transition-colors duration-300 body-font">
     <div class="container px-5 py-2 mx-auto">
-        <h1 class="text-3xl font-bold w-full">Posts</h1>
-        <div class="flex flex-wrap gap-6 my-4 -mx-2">
+        <div class="flex flex-wrap gap-6 my-8 -mx-2 justify-center">
             {% for post in data.Data %}
             <article class="flex max-w-xl flex-col items-start justify-end">
                 {% if post.HeaderImage %}

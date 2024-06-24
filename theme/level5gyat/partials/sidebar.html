@@ -2,13 +2,12 @@
     class="flex md:flex-col flex-row items-center bg-white dark:bg-black bg-opacity-30 dark:bg-opacity-30 backdrop-blur shadow-md sticky md:fixed md:top-0 bottom-0 md:w-16 md:h-screen w-screen h-16 p-4 md:justify-between justify-center gap-4 z-40">
     <div class="flex md:flex-col flex-row items-center">
         <a class="w-12 md:mb-8 hidden md:block" href="/">
-            <img src="https://images.freeimages.com/images/large-previews/023/geek-avatar-1632962.jpg"
-                alt="{{ data.Name }}" class="w-full">
+            <img src="/static/logo.svg" title="{{ data.Name }}" alt="{{ data.Name }}" class="w-full">
         </a>
         <ul class="flex flex-row md:flex-col gap-4">
             <li class="md:mb-4">
                 <a href="/"
-                    class="text-neutral-900 dark:text-neutral-100 hover:text-primary-500 dark:hover:text-primary-500">
+                    class="text-neutral-900 dark:text-neutral-100 hover:text-primary-500 dark:hover:text-primary-500 nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="icon icon-tabler icons-tabler-outline icon-tabler-home">
@@ -17,11 +16,12 @@
                         <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
                         <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
                     </svg>
+                    <span class="text-xs">Home</span>
                 </a>
             </li>
             <li class="md:mb-4">
                 <a href="/posts/page/1.html"
-                    class="text-neutral-900 dark:text-neutral-100 hover:text-primary-500 dark:hover:text-primary-500">
+                    class="text-neutral-900 dark:text-neutral-100 hover:text-primary-500 dark:hover:text-primary-500 nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="icon icon-tabler icons-tabler-outline icon-tabler-news">
@@ -32,11 +32,12 @@
                         <path d="M8 12l4 0" />
                         <path d="M8 16l4 0" />
                     </svg>
+                    <span class="text-xs">Posts</span>
                 </a>
             </li>
             <li class="md:mb-4">
                 <a target="_blank" href="https://github.com/kaustubha-chaturvedi"
-                    class="text-neutral-900 dark:text-neutral-100 hover:text-primary-500 dark:hover:text-primary-500">
+                    class="text-neutral-900 dark:text-neutral-100 hover:text-primary-500 dark:hover:text-primary-500 nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="icon icon-tabler icons-tabler-outline icon-tabler-brand-github">
@@ -44,11 +45,12 @@
                         <path
                             d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
                     </svg>
+                    <span class="text-xs">GitHub</span>
                 </a>
             </li>
             <li class="md:mb-4">
                 <a target="_blank" href="https://www.linkedin.com/in/kaustubha-chaturvedi/"
-                    class="text-neutral-900 dark:text-neutral-100 hover:text-primary-500 dark:hover:text-primary-500">
+                    class="text-neutral-900 dark:text-neutral-100 hover:text-primary-500 dark:hover:text-primary-500 nav-link">
                     <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
                         stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
                         class="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin">
@@ -59,6 +61,7 @@
                         <path d="M12 16l0 -5" />
                         <path d="M16 16v-3a2 2 0 0 0 -4 0" />
                     </svg>
+                    <span class="text-xs">LinkedIn</span>
                 </a>
             </li>
         </ul>

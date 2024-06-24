@@ -10,10 +10,12 @@
         </div>
         <h1 class="text-4xl font-bold my-8">{{ data.Title }}</h1>
         <p class="text-sm">{{ data.Description | safe }}</p>
+        {% if data.HeaderImage %}
         <div class="w-full h-64">
             <img src="{{ data.HeaderImage }}" alt="Profile Image"
                 class="w-full h-full rounded-xl object-cover object-center" />
         </div>
+        {% endif %}
         <hr class="h-px w-full border-t-0 bg-neutral-100 dark:bg-white/10 my-8 rounded-md" />
         {{ data.Content | safe }}
     </article>

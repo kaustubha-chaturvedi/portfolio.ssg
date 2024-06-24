@@ -81,7 +81,7 @@ func CopyStatic(srcDir, destDir string) {
 			if err != nil {
 				log.Fatalf("Failed to create destination directory %s: %v", destPath, err)
 			}
-			CopyStatic(srcPath, destPath) // Recursively copy subdirectories
+			CopyStatic(srcPath, destPath)
 			continue
 		}
 
