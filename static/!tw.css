@@ -24,6 +24,7 @@
   z-index: 1000;
 }
 
+
 .inner-cursor.grow {
   width: 30px;
   height: 30px;
@@ -46,6 +47,18 @@
 .outer-cursor.grow {
   transition: border 0.5s;
   border: 0px solid #fff;
+}
+
+@media screen and (max-width: 768px){
+  .inner-cursor {
+    display: none;
+  }
+  .outer-cursor {
+    display: none;
+  }
+  * {
+    cursor: auto;
+  }
 }
 
 .nav-link {
