@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block title %}{{ data.Name }}-{{ data.Tagline }}{% endblock title %}
 {% block content %}
-<article class="mt-4 px-2 transition-colors duration-300">
+<article class="mt-4 px-2 transition-colors duration-300 md:mx-16 mx-2">
     <div class="flex flex-wrap items-center justify-around text-center">
         <div class="flex flex-col justify-center md:text-left items-center md:items-start ">
             <img src="{{ data.Image }}" alt="Profile Image" class="w-96 mb-4 rounded-full">
@@ -24,7 +24,7 @@
         </div>
     </div>
     <div class="flex flex-wrap items-center justify-around">
-        <div class="flex flex-col justify-center md:text-left items-center md:items-start mx-16">
+        <div class="flex flex-col justify-center md:text-left items-center md:items-start md:mx-16 mx-2">
             <h1 class="text-3xl font-bold my-4 px-3">Projects</h1>
             <div class="flex justify-center md:text-left items-center md:items-start my-4 flex-wrap gap-6">
                 {% include "projects.html" %}
