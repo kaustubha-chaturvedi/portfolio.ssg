@@ -1,6 +1,6 @@
 ---
 title: New Post
-header-image: 
+header-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbhwzNrngWxm7FE7Q__Dd3jEEeuYeyewgxXA&s
 description: This is my new post
 author: Kaustubha Chaturvedi
 tags: new, post
