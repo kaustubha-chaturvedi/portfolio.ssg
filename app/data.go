@@ -48,7 +48,7 @@ func getData(path string) interface{} {
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		line := scanner.Text()
-		if line == "---" {
+		if line == "|meta|" {
 			inHeader = !inHeader
 			continue
 		}

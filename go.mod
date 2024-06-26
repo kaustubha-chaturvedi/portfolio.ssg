@@ -9,4 +9,8 @@ require (
 	github.com/yuin/goldmark v1.7.0
 )
 
-require github.com/tdewolff/parse/v2 v2.7.15 // indirect
+require (
+	github.com/litao91/goldmark-mathjax v0.0.0-20210217064022-a43cf739a50f // indirect
+	github.com/quail-ink/goldmark-enclave v0.0.10 // indirect
+	github.com/tdewolff/parse/v2 v2.7.15 // indirect
+)

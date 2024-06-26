@@ -5,7 +5,7 @@
     <div class="container px-5 py-2 mx-auto">
         <div class="flex flex-wrap gap-6 my-8 -mx-2 justify-center">
             {% for post in data.Data %}
-            <div class="flex w-full md:w-auto justify-center gap-2">
+            <div class="flex w-full md:w-auto gap-2">
                 <a href="/posts/{{ post.Slug }}.html" class="text-5xl mt-4">{{ forloop.Counter }}</a>
                 <article class="flex max-w-xl flex-col items-start justify-end h-max">
                     {% if post.HeaderImage %}

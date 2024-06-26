@@ -1,11 +1,11 @@
----
+|meta|
 title: New Post
 header-image: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbhwzNrngWxm7FE7Q__Dd3jEEeuYeyewgxXA&s
 description: This is my new post
 author: Kaustubha Chaturvedi
 tags: new, post
 date: Feb 04, 2024
----
+|meta|
 
 # A repo only contains a MarkDown files
 > Yea, I know that maybe this is not a very useful repository.
@@ -164,9 +164,9 @@ Standard link =  https://igorkowalczyk.github.io
 ## Change Size
 GFM (Github Flavored MarkDown) don't support change size of img but You can use some HTML "img" tags in your Markdown:
 									       
-```html
+`
 <img src="https://github.com/fluidicon.png" alt="Image" width="200" height="200"/>
-```
+`
 
 <img src="https://github.com/fluidicon.png" alt="Image" width="200" height="200"/>
 
@@ -175,15 +175,19 @@ GFM (Github Flavored MarkDown) don't support change size of img but You can use 
 # Table
 
 | Left-Aligned  | Center Aligned  | Right Aligned |
-| :------------ |:---------------:| -----:|
-| col 3 is      | some wordy text | $1600 |
-| col 2 is      | centered        |   $12 |
-| zebra stripes | are neat        |    $1 |
+| :------------ |:---------------:| ------------: |
+| col 3 is      | some wordy text | $1600         |
+| col 2 is      | centered        |   $12         |
+| zebra stripes | are neat        |    $1         |
 
-```markdown
+```
 | Left-Aligned  | Center Aligned  | Right Aligned |
 | :------------ |:---------------:| -----:|
 | col 3 is      | some wordy text | $1600 |
 | col 2 is      | centered        |   $12 |
 | zebra stripes | are neat        |    $1 |
 ```
+
+# Youtube Video
+
+![](https://youtu.be/xXQ2F7D6PBY?feature=shared)

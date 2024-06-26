@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
     headings.forEach(heading => {
         const level = parseInt(heading.tagName[1]);
         const text = heading.innerText;
-        const id = text.toLowerCase().replace(/\s+/g, '-');
+        const id = heading.id || text.toLowerCase().replace(/ /g, '-').replace(/[^\w-]+/g, '');
         heading.setAttribute('id', id);
 
         const newItem = { id, text, level, children: [] };

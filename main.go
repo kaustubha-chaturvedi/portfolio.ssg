@@ -78,7 +78,6 @@ func main() {
 		outputPath := filepath.Join(PublicPostsDir, fmt.Sprintf("%s.html", strings.TrimSuffix(post.Slug, ".md")))
 		app.RenderPage(filepath.Join(ThemeDir, "post.html"), outputPath, struct{ app.Post }{post})
 	}
-	outputMinifier()
 	serve()
 }
 
@@ -91,6 +90,7 @@ func serve() {
 		log.Printf("Server listening on http://localhost:8080")
 		log.Fatal(http.ListenAndServe(":8080", nil))
 	} else {
+		outputMinifier()
 		log.Println("Server can't be started in PROD.")
 	}
 }

@@ -72,15 +72,18 @@
   transition: opacity 0.5s ease-out;
   opacity: 0;
   height: 0;
+  width: 0;
   overflow: hidden;
 }
 
 .nav-link:hover span {
   opacity: 1;
   height: auto;
+  width: auto;
 }
 
 .nav-link.active span {
-  height: auto;
   opacity: 1;
+  height: auto;
+  width: auto;
 }

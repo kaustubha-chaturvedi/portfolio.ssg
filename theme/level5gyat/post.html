@@ -3,7 +3,14 @@
 {% block content %}
 <section class="flex">
     <article id="content"
-        class="flex-1 porse dark:porse-invert prose-neutral prose-lg max-w-2xl lg:max-w-4xl prose-img:rounded-lg prose-a:text-blue-400 mx-auto p-4 marker:text-orange-300 dark:marker:text-green-800 w-full dark:text-neutral-300 text-neutral-600">
+        class="flex-1 max-w-2xl lg:max-w-4xl mx-auto p-4 w-full dark:text-neutral-300 text-neutral-600
+            porse dark:porse-invert prose-neutral prose-lg 
+            prose-img:rounded-lg prose-a:text-blue-400
+            prose-table:w-full prose-table:overflow-x-auto prose-table:rounded-lg 
+            prose-table:border prose-table:border-neutral-100 dark:prose-table:border-neutral-800
+            prose-th:border prose-th:p-2 prose-th:border-neutral-100 dark:prose-th:border-neutral-800
+            prose-td:border prose-td:p-2 prose-td:border-neutral-100 dark:prose-td:border-neutral-800
+            prose-pre:overflow-auto marker:text-orange-300 dark:marker:text-green-800">
         <div class="flex justify-between dark:text-neutral-300 text-neutral-600 text-sm">
             <span>| {{ data.Date }}</span>
             <span>{{ data.ReadTime }}</span>
@@ -16,7 +23,7 @@
                 class="w-full h-full rounded-xl object-cover object-center" />
         </div>
         {% endif %}
-        <hr class="h-px w-full border-t-0 bg-neutral-100 dark:bg-white/10 my-8 rounded-lg" />
+        <hr class="h-px w-full border-t-0 bg-neutral-100 dark:bg-neutral-800 my-8 rounded-lg" />
         {{ data.Content | safe }}
     </article>
     <div class="w-64 p-4 border-l h-full overflow-y-auto sticky top-16 hidden lg:block text-black">

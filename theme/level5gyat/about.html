@@ -19,8 +19,20 @@
         </div>
         <div
             class="prose dark:prose-invert porse-neutral porse-lg prose-img:rounded-lg prose-a:text-blue-400 p-6 
-            marker:text-orange-300 dark:marker:text-green-800 text-left rounded-3xl m-4 bg-white dark:bg-black bg-opacity-30 dark:bg-opacity-30 backdrop-blur shadow-lg glow:text-glow glow:border-glow glow:ring-glow glow:bg-glow[.15]">
+            marker:text-lime-600 dark:marker:text-lime-300 text-left rounded-3xl m-4 bg-white dark:bg-black bg-opacity-30 dark:bg-opacity-30 backdrop-blur shadow-xl glow:text-glow glow:border-glow glow:ring-glow glow:bg-glow[.15]">
             {{ data.Content | safe }}
+            <div class="flex justify-center">
+                <a target="_blank" download href="/static/resume/resume.pdf" class="bg-white dark:bg-black rounded-lg px-2 py-2 flex justify-center items-center no-underline hover:underline bg-opacity-30 dark:bg-opacity-30 backdrop-blur">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="icon icon-tabler icons-tabler-outline icon-tabler-download">
+                        <path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
+                        <path d="M7 11l5 5l5 -5" />
+                        <path d="M12 4l0 12" />
+                    </svg>
+                    Resume
+                </a>
+            </div>
         </div>
     </div>
     <div class="flex flex-wrap items-center justify-around">
