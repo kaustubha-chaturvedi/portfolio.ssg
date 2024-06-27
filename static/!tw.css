@@ -49,7 +49,7 @@
   border: 0px solid #fff;
 }
 
-@media screen and (max-width: 768px){
+@media screen and (max-width: 767px){
   .inner-cursor {
     display: none;
   }
@@ -58,6 +58,9 @@
   }
   * {
     cursor: auto;
+  }
+  .nav-link span {
+    width: 0;
   }
 }
 
@@ -72,7 +75,6 @@
   transition: opacity 0.5s ease-out;
   opacity: 0;
   height: 0;
-  width: 0;
   overflow: hidden;
 }
 
